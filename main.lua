@@ -4,49 +4,46 @@ mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "tab
 
 -- ========== Sprite ========== 
 
-local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortrait.png")
-local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortraitSmall.png")
+-- local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortrait.png")
+-- local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortraitSmall.png")
 
 -- Using a modified version of https://elthen.itch.io/2d-pixel-art-portal-sprites as a placeholder
-local special_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","PurplePortalSpriteSheet192x96.png")
-local ball_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","sCandymanBall.png")
+-- local special_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","PurplePortalSpriteSheet192x96.png")
+-- local ball_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","sCandymanBall.png")
 
 local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "skillsicons.png")
-local loadout_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanLoadout.png")
-local idle_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanIdle.png")
-local walk_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanWalk.png")
-local shoot1_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot1.png")
-local shoot1_air_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot1Air.png")
-local shoot2_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot2.png")
-local death_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanDeath.png")
-local jump_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjump.png")
-local jumpfall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjumpfall.png")
-local hit_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanhit.png")
-local empty_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanEmpty.png")
+-- local loadout_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanLoadout.png")
+-- local idle_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanIdle.png")
+-- local walk_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanWalk.png")
+-- local shoot1_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot1.png")
+-- local shoot1_air_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot1Air.png")
+-- local shoot2_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanShoot2.png")
+-- local death_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanDeath.png")
+-- local jump_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjump.png")
+-- local jumpfall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjumpfall.png")
+-- local hit_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanhit.png")
+-- local empty_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanEmpty.png")
 
-local palette_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "candyman_PAL.png")
+-- local palette_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "candyman_PAL.png")
 
 
-local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
-local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
-
-local special_sprite = gm.sprite_add(special_path, 8, false, false, 48, 105)
-local ball_sprite = gm.sprite_add(ball_path, 6, false, false, 14, 14)
+-- local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
+-- local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
 
 local skills_sprite = gm.sprite_add(skills_path, 4, false, false, 0, 0)
-local loadout_sprite = gm.sprite_add(loadout_path, 7, false, false, 100, 5)
-local idle_sprite = gm.sprite_add(idle_path, 3, false, false, 29, 45)
-local walk_sprite = gm.sprite_add(walk_path, 2, false, false, 29, 45)
-local shoot1_sprite = gm.sprite_add(shoot1_path, 7, false, false, 29, 45)
-local shoot1_air_sprite = gm.sprite_add(shoot1_air_path, 7, false, false, 29, 45)
-local shoot2_sprite = gm.sprite_add(shoot2_path, 4, false, false, 29, 45)
-local death_sprite = gm.sprite_add(death_path, 4, false, false, 29, 10)
-local jump_sprite = gm.sprite_add(jump_path, 1, false, false, 29, 45)
-local jumpfall_sprite = gm.sprite_add(jumpfall_path, 1, false, false, 29, 45)
-local hit_sprite = gm.sprite_add(hit_path, 1, false, false, 29, 45)
-local empty_sprite = gm.sprite_add(empty_path, 1, false, false, 0, 0)
+-- local loadout_sprite = gm.sprite_add(loadout_path, 7, false, false, 100, 5)
+-- local idle_sprite = gm.sprite_add(idle_path, 3, false, false, 29, 45)
+-- local walk_sprite = gm.sprite_add(walk_path, 2, false, false, 29, 45)
+-- local shoot1_sprite = gm.sprite_add(shoot1_path, 7, false, false, 29, 45)
+-- local shoot1_air_sprite = gm.sprite_add(shoot1_air_path, 7, false, false, 29, 45)
+-- local shoot2_sprite = gm.sprite_add(shoot2_path, 4, false, false, 29, 45)
+-- local death_sprite = gm.sprite_add(death_path, 4, false, false, 29, 10)
+-- local jump_sprite = gm.sprite_add(jump_path, 1, false, false, 29, 45)
+-- local jumpfall_sprite = gm.sprite_add(jumpfall_path, 1, false, false, 29, 45)
+-- local hit_sprite = gm.sprite_add(hit_path, 1, false, false, 29, 45)
+-- local empty_sprite = gm.sprite_add(empty_path, 1, false, false, 0, 0)
 
-local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
+-- local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
 
 
 -- ========== Survivor Setup ==========
@@ -73,8 +70,8 @@ local function create_survivor()
     ImpOverlord.sprite_portrait = 722
     ImpOverlord.sprite_portrait_small = 722
     ImpOverlord.sprite_palette = 830
-    ImpOverlord.sprite_portrait_palette = palette_sprite
-    ImpOverlord.sprite_loadout_palette = palette_sprite
+    ImpOverlord.sprite_portrait_palette = 830
+    ImpOverlord.sprite_loadout_palette = 830
     ImpOverlord.sprite_credits = 814
 
     -- Configure Skills
