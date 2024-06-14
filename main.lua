@@ -7,10 +7,6 @@ mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "tab
 -- local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortrait.png")
 -- local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortraitSmall.png")
 
--- Using a modified version of https://elthen.itch.io/2d-pixel-art-portal-sprites as a placeholder
--- local special_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","PurplePortalSpriteSheet192x96.png")
--- local ball_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","sCandymanBall.png")
-
 local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "skillsicons.png")
 -- local loadout_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanLoadout.png")
 -- local idle_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanIdle.png")
