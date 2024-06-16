@@ -1,26 +1,24 @@
-log.info("Successfully loaded ".._ENV["!guid"]..".")
+-- ImpOverlord v1.0.0
+-- SmoothSpatula
+log.info("Loading ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.hfuncs then Helper = v end end end)
 
 -- ========== Sprite ========== 
 
--- local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortrait.png")
--- local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanPortraitSmall.png")
-
--- Using a modified version of https://elthen.itch.io/2d-pixel-art-portal-sprites as a placeholder
--- local special_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","PurplePortalSpriteSheet192x96.png")
--- local ball_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites","sCandymanBall.png")
+local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPortrait.png")
+local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPortraitSmall.png")
 
 local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "skillsicons.png")
 -- local jump_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjump.png")
 -- local jumpfall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanjumpfall.png")
 -- local hit_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "sCandymanhit.png")
 
--- local palette_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "candyman_PAL.png")
+local palette_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPAL.png")
 
 
--- local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
--- local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
+local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
+local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
 local skills_sprite = gm.sprite_add(skills_path, 4, false, false, 0, 0)
 local loadout_sprite = gm.sprite_duplicate(808)
 local idle_sprite = gm.sprite_duplicate(812)
@@ -36,7 +34,7 @@ local death_sprite = gm.sprite_duplicate(828)
 -- local hit_sprite = gm.sprite_add(hit_path, 1, false, false, 29, 45)
 
 
--- local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
+local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
 
 gm.sprite_set_offset(idle_sprite, 70, 107)
 gm.sprite_set_speed(idle_sprite, 1, 1)
@@ -78,12 +76,14 @@ local function create_survivor()
     ImpOverlord.sprite_loadout = loadout_sprite
     ImpOverlord.sprite_title = walk_sprite
     ImpOverlord.sprite_idle = idle_sprite
-    ImpOverlord.sprite_portrait = 722
-    ImpOverlord.sprite_portrait_small = 722
-    ImpOverlord.sprite_palette = 830
-    ImpOverlord.sprite_portrait_palette = 830
-    ImpOverlord.sprite_loadout_palette = 830
+    ImpOverlord.sprite_portrait = portrait_sprite
+    ImpOverlord.sprite_portrait_small = portraitsmall_sprite
+    ImpOverlord.sprite_palette = palette_sprite
+    ImpOverlord.sprite_portrait_palette = palette_sprite
+    ImpOverlord.sprite_loadout_palette = palette_sprite
     ImpOverlord.sprite_credits = walk_sprite
+
+    ImpOverlord.primary_color = gm.make_colour_rgb(255, 20, 50) -- for stats screen
 
     -- Configure Skills
 
@@ -175,6 +175,20 @@ local function create_survivor()
 
     skill_special.on_can_activate = skills[173][25]
     skill_special.on_activate = skills[173][26]
+
+    -- Init/step/death
+
+    local vanilla_survivor = survivor_setup.Survivor(0)
+    ImpOverlord.on_init = vanilla_survivor.on_init
+    ImpOverlord.on_step = vanilla_survivor.on_step
+    ImpOverlord.on_remove = vanilla_survivor.on_remove
+
+    ImpOverlord.cape_offset = vanilla_survivor.cape_offset
+
+    ImpOverlord.cape_offset[1] = - 12.0
+    ImpOverlord.cape_offset[2] = - 55.0
+    ImpOverlord.cape_offset[3] = 3.0
+    
 end
 
 
