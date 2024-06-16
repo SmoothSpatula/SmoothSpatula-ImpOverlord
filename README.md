@@ -4,7 +4,7 @@ This mods makes the Imp Overlord playable, reusing nearly exclusively in-game as
 
 ## Disclaimer
 
-* I think this mod will work in mutliplayer but havent tested yet
+* Has been tested successfully in multiplayer, but might still be issues
 * If you feel like this mod is missing features (like sounds, different colors, etc...) they might come in the future.
 
 ## Special Thanks To
