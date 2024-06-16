@@ -2,7 +2,7 @@
 	"name": "ImpOverlord",
 	"version_number": "1.0.0",
 	"website_url": "https://github.com/SmoothSpatula/SmoothSpatula-ImpOverlord",
-	"description": "Add Imp Overlord",
+	"description": "Makes Imp Overlord playable. (this is a WIP, I think it should work in multiplayer though)",
 	"dependencies": [
 		"ReturnOfModding-ReturnOfModding-1.0.31",
 		"Klehrik-HelperFunctions-1.0.4"
