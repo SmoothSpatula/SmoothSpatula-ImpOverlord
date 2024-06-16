@@ -1,6 +1,6 @@
 -- ImpOverlord v1.0.0
 -- SmoothSpatula
-log.info("Loading ".._ENV["!guid"]..".")
+log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
 mods.on_all_mods_loaded(function() for k, v in pairs(mods) do if type(v) == "table" and v.hfuncs then Helper = v end end end)
 
@@ -244,8 +244,9 @@ gm.post_script_hook(gm.constants.callback_execute, function(self, other, result,
     if callback_id == ImpOverlord.skill_family_z[0].on_activate then
         -- do better hit
         func_explode(self)
-        local _handle = gm.call_later(20, 1, gm.constants.function_dummy, false)
-        local _handle2 = gm.call_later(40, 1, gm.constants.function_dummy, false)
+        local myMethod = gm.method(self.id, gm.constants.function_dummy)
+        local _handle = gm.call_later(20, 1, myMethod, false)
+        local _handle2 = gm.call_later(40, 1, myMethod, false)
     end
 
     if callback_id == ImpOverlord.skill_family_v[0].on_activate then
@@ -261,7 +262,8 @@ gm.post_script_hook(gm.constants.stage_load_room, function(self, other, result, 
 end)
 
 gm.post_script_hook(gm.constants.function_dummy, function(self, other, result, args)
-    func_explode(Helper.get_client_player())
+    if self.class ~= ImpOverlord_id then return end
+    func_explode(self)
 end)
 
 gm.post_script_hook(gm.constants.texture_flush_group, function()
