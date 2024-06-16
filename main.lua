@@ -1,4 +1,4 @@
--- ImpOverlord v1.0.0
+-- ImpOverlord v1.0.2
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
@@ -52,8 +52,6 @@ gm.sprite_set_offset(loadout_sprite, 40, -50)
 gm.sprite_set_speed(loadout_sprite, 5, 0)
 gm.sprite_set_offset(death_sprite, 90, 187)
 gm.sprite_set_speed(death_sprite, 1, 1)
-
-print(death_sprite)
 
 -- ========== Survivor Setup ==========
 
@@ -185,10 +183,10 @@ local function create_survivor()
 
     ImpOverlord.cape_offset = vanilla_survivor.cape_offset
 
-    ImpOverlord.cape_offset[1] = - 12.0
-    ImpOverlord.cape_offset[2] = - 55.0
-    ImpOverlord.cape_offset[3] = 3.0
-    
+    local cape_offset = gm.variable_global_get("class_survivor")[ImpOverlord_id+1][34]
+    gm.array_set(cape_offset, 0, -12.0)
+    gm.array_set(cape_offset, 1, - 55.0)
+    gm.array_set(cape_offset, 2, 3.0)
 end
 
 
@@ -251,7 +249,9 @@ gm.post_script_hook(gm.constants.callback_execute, function(self, other, result,
 
     if callback_id == ImpOverlord.skill_family_v[0].on_activate then
         -- do better spawn
-        local inst = gm.instance_create_depth(self.x, self.y, self.layer, gm.constants["oImpFriend"])
+        if Helper.get_client_player().m_id < 2.0  then
+            local inst = gm.instance_create_depth(self.x, self.y, self.layer, gm.constants["oImpFriend"])
+        end
     end
 end)
 
